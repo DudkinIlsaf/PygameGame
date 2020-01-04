@@ -40,3 +40,10 @@ class Snake():
         else:
             self.snake_body.pop()
         return score, food_pos
+
+    def draw_snake(self, play_surface, surface_color):
+        play_surface.fill(surface_color)
+        for pos in self.snake_body:
+            pygame.draw.rect(
+                play_surface, self.snake_color, pygame.Rect(
+                    pos[0], pos[1], 10, 10))
