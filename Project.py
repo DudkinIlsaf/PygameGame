@@ -18,3 +18,12 @@ class Game():
         self.fps_controller = pygame.time.Clock()
 
         self.score = 0
+
+    def init_and_check_for_errors(self):
+        """Начальная функция для инициализации и
+           проверки как запустится pygame"""
+        check_errors = pygame.init()
+        if check_errors[1] > 0:
+            sys.exit()
+        else:
+            print('Ok')
