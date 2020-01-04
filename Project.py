@@ -47,3 +47,18 @@ class Game():
                     pygame.quit()
                     sys.exit()
         return change_to
+
+    def refresh_screen(self):
+        pygame.display.flip()
+        game.fps_controller.tick(23)
+
+    def show_score(self, choice=1):
+        s_font = pygame.font.SysFont('monaco', 24)
+        s_surf = s_font.render(
+            'Score: {0}'.format(self.score), True, self.black)
+        s_rect = s_surf.get_rect()
+        if choice == 1:
+            s_rect.midtop = (80, 10)
+        else:
+            s_rect.midtop = (360, 120)
+        self.play_surface.blit(s_surf, s_rect)
