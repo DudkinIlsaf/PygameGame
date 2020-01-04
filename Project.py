@@ -47,3 +47,16 @@ class Snake():
             pygame.draw.rect(
                 play_surface, self.snake_color, pygame.Rect(
                     pos[0], pos[1], 10, 10))
+
+    def check_for_boundaries(self, game_over, screen_width, screen_height):
+        if any((
+            self.snake_head_pos[0] > screen_width-10
+            or self.snake_head_pos[0] < 0,
+            self.snake_head_pos[1] > screen_height-10
+            or self.snake_head_pos[1] < 0
+                )):
+            game_over()
+        for block in self.snake_body[1:]:
+            if (block[0] == self.snake_head_pos[0] and
+                    block[1] == self.snake_head_pos[1]):
+                    game_over()
