@@ -30,3 +30,20 @@ class Game():
         self.play_surface = pygame.display.set_mode((
             self.screen_width, self.screen_height))
         pygame.display.set_caption('Snake Game')
+
+    def event_loop(self, change_to):
+        for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RIGHT or event.key == ord('d'):
+                    change_to = "RIGHT"
+                elif event.key == pygame.K_LEFT or event.key == ord('a'):
+                    change_to = "LEFT"
+                elif event.key == pygame.K_UP or event.key == ord('w'):
+                    change_to = "UP"
+                elif event.key == pygame.K_DOWN or event.key == ord('s'):
+                    change_to = "DOWN"
+                # нажали escape
+                elif event.key == pygame.K_ESCAPE:
+                    pygame.quit()
+                    sys.exit()
+        return change_to
