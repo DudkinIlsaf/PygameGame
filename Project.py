@@ -131,3 +131,17 @@ class Snake():
             if (block[0] == self.snake_head_pos[0] and
                     block[1] == self.snake_head_pos[1]):
                     game_over()
+
+class Food():
+    def __init__(self, food_color, screen_width, screen_height):
+        self.food_color = food_color
+        self.food_size_x = 10
+        self.food_size_y = 10
+        self.food_pos = [random.randrange(1, screen_width/10)*10,
+                         random.randrange(1, screen_height/10)*10]
+
+    def draw_food(self, play_surface):
+        pygame.draw.rect(
+            play_surface, self.food_color, pygame.Rect(
+                self.food_pos[0], self.food_pos[1],
+                self.food_size_x, self.food_size_y))
