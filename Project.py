@@ -29,7 +29,7 @@ class Game():
     def set_surface_and_title(self):
         self.play_surface = pygame.display.set_mode((
             self.screen_width, self.screen_height))
-        pygame.display.set_caption('Snake Game')
+        pygame.display.set_caption('Змейка')
 
     def event_loop(self, change_to):
         for event in pygame.event.get():
@@ -62,3 +62,15 @@ class Game():
         else:
             s_rect.midtop = (360, 120)
         self.play_surface.blit(s_surf, s_rect)
+
+    def game_over(self):
+        go_font = pygame.font.SysFont('monaco', 72)
+        go_surf = go_font.render('Game over', True, self.red)
+        go_rect = go_surf.get_rect()
+        go_rect.midtop = (360, 15)
+        self.play_surface.blit(go_surf, go_rect)
+        self.show_score(0)
+        pygame.display.flip()
+        time.sleep(3)
+        pygame.quit()
+        sys.exit()
